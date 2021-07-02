@@ -1,0 +1,71 @@
+ALGORITHM programme
+
+VAR 
+
+set1: ARRAY_OF INTEGER[10];
+/* un tableau contenant les elements distincts de set1*/
+set1_d: ARRAY_OF INTEGER[10];
+
+set2: ARRAY_OF INTEGER[7];
+/* un tableau contenant les elements distincts de set2*/
+set2_d: ARRAY_OF INTEGER[7]; 
+
+
+/*compteurs*/
+i:INTEGER:=0;
+j:INTEGER:=0;
+k:INTEGER:=0;
+l:INTEGER:=0;
+m:INTEGER:=0;
+sum:INTEGER:=0;
+
+BEGIN
+
+/*entree des tableaux*/
+
+set1[0]:=9;
+set2[0]:=7;
+
+FOR i FROM 0 TO set1.length-1 STEP 1  DO
+ DO                     
+   {
+   read(set1[i+1])
+   }
+   while (set1[i]<>set1[i+1])   /*make sure that all tab elements are differents*/
+   END_FOR
+  
+  FOR i FROM 0 TO set2.length-1 STEP 1  DO
+ DO 
+   {
+   read(set2[i+1])
+   }
+   while (set2[i]<>set2[i+1])   /*make sure that all tab elements are differents*/
+   END_FOR
+  
+/*les element distincts*/
+
+FOR j FROM 0 TO set1.length-1 STEP 1  DO
+  FOR k FROM 0 TO set2.length-1 STEP 1  DO
+    IF (set1[j]=set2[k]) THEN
+      set1_d[j]:=0;
+      set2_d[k]:=0;
+    END_IF
+  END_FOR
+END_FOR
+
+/* somme des elements distincts*/
+
+FOR l FROM 0 TO set1_d.length-1 STEP 1  DO
+  sum:=sum+set1_d[l];
+END_FOR
+
+FOR m FROM 0 TO set2_d.length-1 STEP 1  DO
+  sum:=sum+set2_d[m];
+END_FOR
+
+
+/*affichage de resultat*/
+write('somme des elements distincts')
+write(sum);
+
+END
